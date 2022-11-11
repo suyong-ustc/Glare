@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>qml;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>qrc;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+    </Filter>
+    <Filter Include="Header Files\AssessDialog">
+      <UniqueIdentifier>{02fc52fd-d3ca-4256-9f61-5e6e95fed3f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\AssessDialog\AssessWidget">
+      <UniqueIdentifier>{5a9b76f3-f72d-46ee-b868-61db4e83eb0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\PatternDialog">
+      <UniqueIdentifier>{03e3c7ee-99a3-4668-8cb7-055cc5d64f2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\RecommendDialog">
+      <UniqueIdentifier>{67ca676c-9b78-48d9-abf6-d572bfb909de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\SpecklePattern">
+      <UniqueIdentifier>{2b5605e8-d9dd-4db7-b53a-e4a8b584dc0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TransformDialog">
+      <UniqueIdentifier>{baa7f610-5dd4-42ee-8613-1d196d2e89d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AssessDialog">
+      <UniqueIdentifier>{8d859479-58e4-4ebf-821b-3fc882b1abd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AssessDialog\AssessWidget">
+      <UniqueIdentifier>{97e13194-a7b3-44a6-ac42-9b15f9352673}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\PatternDialog\SceneViewItem">
+      <UniqueIdentifier>{8cc4e610-8717-4cc7-94f6-051bde6c24b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\PatternDialog\SceneViewItem\Item">
+      <UniqueIdentifier>{6332904d-17ad-47d9-9011-6ef511131172}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TransformDialog\ExportSeriesDialog">
+      <UniqueIdentifier>{95d826d9-dda9-4474-947e-6705a8dcc4b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PatternDialog">
+      <UniqueIdentifier>{c68221f1-4678-413c-a3d4-22de3c4f1c5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PatternDialog\SceneViewItem">
+      <UniqueIdentifier>{682958f2-8f80-48bb-ab48-fa89d1f67787}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PatternDialog\SceneViewItem\Item">
+      <UniqueIdentifier>{1112a779-478a-4fce-bd2b-a385dbe59bcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\RecommendDialog">
+      <UniqueIdentifier>{88746d09-81a7-4e1e-a9c2-2ba6f5a90f6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SpecklePattern">
+      <UniqueIdentifier>{7e38449e-e6b7-479f-8ef9-a9dc60c147a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TransformDialog">
+      <UniqueIdentifier>{812a98e0-903d-412d-a44d-44c60ea56c96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TransformDialog\ExportSeriesDialog">
+      <UniqueIdentifier>{97346b9b-a1c3-44f1-b7f4-10c4cf4e9069}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="Glare.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <QtUic Include="Glare.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="qcustomplot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Glare.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AssessDialog.cpp">
+      <Filter>Source Files\AssessDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="AssessSpecklePattern.cpp">
+      <Filter>Source Files\AssessDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="AssessWidget_Autocorrelation.cpp">
+      <Filter>Source Files\AssessDialog\AssessWidget</Filter>
+    </ClCompile>
+    <ClCompile Include="AssessWidget_Coverage.cpp">
+      <Filter>Source Files\AssessDialog\AssessWidget</Filter>
+    </ClCompile>
+    <ClCompile Include="AssessWidget_InterpolationBias.cpp">
+      <Filter>Source Files\AssessDialog\AssessWidget</Filter>
+    </ClCompile>
+    <ClCompile Include="AssessWidget_SSSIG.cpp">
+      <Filter>Source Files\AssessDialog\AssessWidget</Filter>
+    </ClCompile>
+    <ClCompile Include="EllipseSpeckleItem.cpp">
+      <Filter>Source Files\PatternDialog\SceneViewItem\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonSpeckleItem.cpp">
+      <Filter>Source Files\PatternDialog\SceneViewItem\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="SpeckleView.cpp">
+      <Filter>Source Files\PatternDialog\SceneViewItem</Filter>
+    </ClCompile>
+    <ClCompile Include="SpeckleScene.cpp">
+      <Filter>Source Files\PatternDialog\SceneViewItem</Filter>
+    </ClCompile>
+    <ClCompile Include="CentralWidget.cpp">
+      <Filter>Source Files\PatternDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="RecommendDialog.cpp">
+      <Filter>Source Files\RecommendDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderPatternPixmap.cpp">
+      <Filter>Source Files\SpecklePattern</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonSpecklePattern.cpp">
+      <Filter>Source Files\SpecklePattern</Filter>
+    </ClCompile>
+    <ClCompile Include="GaussianPattern.cpp">
+      <Filter>Source Files\SpecklePattern</Filter>
+    </ClCompile>
+    <ClCompile Include="EllipseSpecklePattern.cpp">
+      <Filter>Source Files\SpecklePattern</Filter>
+    </ClCompile>
+    <ClCompile Include="ExportSeriesImageDialog.cpp">
+      <Filter>Source Files\TransformDialog\ExportSeriesDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="ExportSeriesImageWidget_Elongation.cpp">
+      <Filter>Source Files\TransformDialog\ExportSeriesDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="ExportSeriesImageWidget_Gaussian.cpp">
+      <Filter>Source Files\TransformDialog\ExportSeriesDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="ExportSeriesImageWidget_PLC.cpp">
+      <Filter>Source Files\TransformDialog\ExportSeriesDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="ExportSeriesImageWidget_Rotation.cpp">
+      <Filter>Source Files\TransformDialog\ExportSeriesDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="ExportSeriesImageWidget_Sinusoidal.cpp">
+      <Filter>Source Files\TransformDialog\ExportSeriesDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="ExportSeriesImageWidget_Translation.cpp">
+      <Filter>Source Files\TransformDialog\ExportSeriesDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="DeformationParameterPanel_Elongation.cpp">
+      <Filter>Source Files\TransformDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="DeformationParameterPanel_Gaussian.cpp">
+      <Filter>Source Files\TransformDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="DeformationParameterPanel_PLC.cpp">
+      <Filter>Source Files\TransformDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="DeformationParameterPanel_Rotation.cpp">
+      <Filter>Source Files\TransformDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="DeformationParameterPanel_Sinusoidal.cpp">
+      <Filter>Source Files\TransformDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="DeformationParameterPanel_Translation.cpp">
+      <Filter>Source Files\TransformDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="InverseMap.cpp">
+      <Filter>Source Files\TransformDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformDialog.cpp">
+      <Filter>Source Files\TransformDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="DeformationParameterPanel_2DSinusoidal.cpp">
+      <Filter>Source Files\TransformDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="DeformationParameterPanel_2DGaussian.cpp">
+      <Filter>Source Files\TransformDialog</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="qcustomplot.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Glare.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="AssessWidget_Autocorrelation.h">
+      <Filter>Header Files\AssessDialog\AssessWidget</Filter>
+    </QtMoc>
+    <QtMoc Include="AssessWidget_Coverage.h">
+      <Filter>Header Files\AssessDialog\AssessWidget</Filter>
+    </QtMoc>
+    <QtMoc Include="AssessWidget_InterpolationBias.h">
+      <Filter>Header Files\AssessDialog\AssessWidget</Filter>
+    </QtMoc>
+    <QtMoc Include="AssessWidget_SSSIG.h">
+      <Filter>Header Files\AssessDialog\AssessWidget</Filter>
+    </QtMoc>
+    <QtMoc Include="AssessSpecklePattern.h">
+      <Filter>Header Files\AssessDialog</Filter>
+    </QtMoc>
+    <QtMoc Include="AssessDialog.h">
+      <Filter>Header Files\AssessDialog</Filter>
+    </QtMoc>
+    <QtMoc Include="SpeckleScene.h">
+      <Filter>Header Files\PatternDialog\SceneViewItem</Filter>
+    </QtMoc>
+    <QtMoc Include="SpeckleView.h">
+      <Filter>Header Files\PatternDialog\SceneViewItem</Filter>
+    </QtMoc>
+    <QtMoc Include="CentralWidget.h">
+      <Filter>Header Files\PatternDialog</Filter>
+    </QtMoc>
+    <QtMoc Include="RecommendDialog.h">
+      <Filter>Header Files\RecommendDialog</Filter>
+    </QtMoc>
+    <QtMoc Include="RenderPatternPixmap.h">
+      <Filter>Header Files\SpecklePattern</Filter>
+    </QtMoc>
+    <QtMoc Include="ExportSeriesImageDialog.h">
+      <Filter>Header Files\TransformDialog\ExportSeriesDialog</Filter>
+    </QtMoc>
+    <QtMoc Include="ExportSeriesImageWidget_Elongation.h">
+      <Filter>Header Files\TransformDialog\ExportSeriesDialog</Filter>
+    </QtMoc>
+    <QtMoc Include="ExportSeriesImageWidget_Gaussian.h">
+      <Filter>Header Files\TransformDialog\ExportSeriesDialog</Filter>
+    </QtMoc>
+    <QtMoc Include="ExportSeriesImageWidget_PLC.h">
+      <Filter>Header Files\TransformDialog\ExportSeriesDialog</Filter>
+    </QtMoc>
+    <QtMoc Include="ExportSeriesImageWidget_Rotation.h">
+      <Filter>Header Files\TransformDialog\ExportSeriesDialog</Filter>
+    </QtMoc>
+    <QtMoc Include="ExportSeriesImageWidget_Sinusoidal.h">
+      <Filter>Header Files\TransformDialog\ExportSeriesDialog</Filter>
+    </QtMoc>
+    <QtMoc Include="ExportSeriesImageWidget_Translation.h">
+      <Filter>Header Files\TransformDialog\ExportSeriesDialog</Filter>
+    </QtMoc>
+    <QtMoc Include="DeformationParameterPanel_Translation.h">
+      <Filter>Header Files\TransformDialog</Filter>
+    </QtMoc>
+    <QtMoc Include="DeformationParameterPanel_Elongation.h">
+      <Filter>Header Files\TransformDialog</Filter>
+    </QtMoc>
+    <QtMoc Include="DeformationParameterPanel_Gaussian.h">
+      <Filter>Header Files\TransformDialog</Filter>
+    </QtMoc>
+    <QtMoc Include="DeformationParameterPanel_PLC.h">
+      <Filter>Header Files\TransformDialog</Filter>
+    </QtMoc>
+    <QtMoc Include="DeformationParameterPanel_Rotation.h">
+      <Filter>Header Files\TransformDialog</Filter>
+    </QtMoc>
+    <QtMoc Include="DeformationParameterPanel_Sinusoidal.h">
+      <Filter>Header Files\TransformDialog</Filter>
+    </QtMoc>
+    <QtMoc Include="TransformDialog.h">
+      <Filter>Header Files\TransformDialog</Filter>
+    </QtMoc>
+    <QtMoc Include="DeformationParameterPanel_2DSinusoidal.h">
+      <Filter>Header Files\TransformDialog</Filter>
+    </QtMoc>
+    <QtMoc Include="DeformationParameterPanel_2DGaussian.h">
+      <Filter>Header Files\TransformDialog</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="XianType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EllipseSpeckleItem.h">
+      <Filter>Header Files\PatternDialog\SceneViewItem\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonSpeckleItem.h">
+      <Filter>Header Files\PatternDialog\SceneViewItem\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="EllipseSpecklePattern.h">
+      <Filter>Header Files\SpecklePattern</Filter>
+    </ClInclude>
+    <ClInclude Include="GaussianPattern.h">
+      <Filter>Header Files\SpecklePattern</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonSpecklePattern.h">
+      <Filter>Header Files\SpecklePattern</Filter>
+    </ClInclude>
+    <ClInclude Include="InverseMap.h">
+      <Filter>Header Files\TransformDialog</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

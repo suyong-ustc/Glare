@@ -97,6 +97,8 @@ void Glare::ConnectSlots()
 	is_ok = connect(action_transform_gaussian_, &QAction::triggered, this, &Glare::SlotTransform_Gaussian);
 	is_ok = connect(action_transform_plc_band_, &QAction::triggered, this, &Glare::SlotTransform_PLC);
 	is_ok = connect(action_transform_rotation_, &QAction::triggered, this, &Glare::SlotTransform_Rotation);
+	is_ok = connect(action_transform_2D_sinusoidal_, &QAction::triggered, this, &Glare::SlotTransform_2DSinusoidal);
+	is_ok = connect(action_transform_2D_gaussian_, &QAction::triggered, this, &Glare::SlotTransform_2DGaussian);
 
 	is_ok = connect(action_assess_coverage_, &QAction::triggered, this, &Glare::SlotAssess_Coverage);
 	is_ok = connect(action_assess_autocorrelation_, &QAction::triggered, this, &Glare::SlotAssess_Autocorrelation);

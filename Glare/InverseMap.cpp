@@ -131,6 +131,7 @@ rowvec InverseMap::InverseMap_SinusoidalDeformation(const double& a, const doubl
 
 
 
+
 /***********************************************************************************************************************/
 /***********************************************    高斯变形    *********************************************************/
 /***********************************************************************************************************************/
@@ -325,30 +326,6 @@ void InverseMap::InverseMap_RotationDeformation(const double& a, const double& a
 	// 转化为弧度
 	const double theta = angle * datum::pi / 180;
 
-	//const double a1 = cos(theta);
-	//const double b1 = -sin(theta);
-	//const mat c1_mat = deform_x - x0 + x0 * cos(theta) - y0 * sin(theta);
-
-	//const double a2 = sin(theta);
-	//const double b2 = cos(theta);
-	//const mat c2_mat = deform_y - y0 + x0 * sin(theta) + y0 * cos(theta);
-
-	//for (int r = 0; r < deform_x.n_rows; ++r)
-	//{
-	//	for (int c = 0; c < deform_x.n_cols; ++c)
-	//	{
-	//		const double c1 = c1_mat(r, c);
-	//		const double c2 = c2_mat(r, c);
-
-	//		const double x = (b1 * c2 - b2 * c1) / (b1 * a2 - b2 * a1);
-	//		const double y = (c1 * a2 - c2 * a1) / (b1 * a2 - b2 * a1);
-
-	//		refer_x(r, c) = x;
-	//		refer_y(r, c) = y;
-	//	}
-
-	//}
-
 	const mat xp = deform_x - x0;
 	const mat yp = deform_y - y0;
 
@@ -356,4 +333,202 @@ void InverseMap::InverseMap_RotationDeformation(const double& a, const double& a
 	refer_y = (-sin(theta) * xp + yp * cos(theta)) / a + y0;
 
 }
+
+
+
+/***********************************************************************************************************************/
+/***********************************************    正弦变形    *********************************************************/
+/***********************************************************************************************************************/
+
+
+void InverseMap::EstimateInitialPosition_2DSinusoidalDeformation(const double& ax, const double Tx, const double& bx, const int& width, const double& ay, const double& Ty, const double& by, const int& height, mat& x_mat, mat& y_mat)
+{
+	// 估计初值
+	rowvec x = EstimateInitialPosition_SinusoidalDeformation(ax, Tx, bx, width);
+	rowvec y = EstimateInitialPosition_SinusoidalDeformation(ay, Ty, by, height);
+
+	// 对矩阵赋值
+	x_mat.zeros(height, width);
+	y_mat.zeros(height, width);
+
+	for (int r = 0; r < height; ++r)
+	{
+		for (int c = 0; c < width; ++c)
+		{
+			x_mat(r, c) = x(c);
+			y_mat(r, c) = y(r);
+		}
+
+	}
+}
+
+
+void InverseMap::InverseMap_2DSinusoidalDeformation(const double& ax, const double Tx, const double& bx, const int& width, const double& ay, const double& Ty, const double& by, const int& height, mat& x_mat, mat& y_mat)
+{
+	// 估计初值
+	rowvec deform_x_at_refer_estimate = EstimateInitialPosition_SinusoidalDeformation(ax, Tx, bx, width);
+
+	// 使用牛顿迭代法
+	rowvec deform_x_at_refer = zeros<rowvec>(width);
+
+	for (int i = 0; i < width; ++i)
+	{
+		double x = deform_x_at_refer_estimate(i);	// 初值
+
+		// 迭代
+		double dx = 1;
+		double f, fp;
+		while (abs(dx) > 1e-4)
+		{
+			f = x + ax * sin(2 * datum::pi * x / Tx + bx) - i;
+			fp = 1 + 2 * datum::pi * ax / Tx * cos(2 * datum::pi * x / Tx + bx);
+			dx = -f / fp;
+			x = x + dx;
+		}
+
+		deform_x_at_refer(i) = x;
+	}
+
+
+	// 估计初值
+	rowvec deform_y_at_refer_estimate = EstimateInitialPosition_SinusoidalDeformation(ay, Ty, by, height);
+
+	// 使用牛顿迭代法
+	rowvec deform_y_at_refer = zeros<rowvec>(height);
+
+	for (int i = 0; i < height; ++i)
+	{
+		double y = deform_y_at_refer_estimate(i);	// 初值
+
+		// 迭代
+		double dy = 1;
+		double f, fp;
+		while (abs(dy) > 1e-4)
+		{
+			f = y + ay * sin(2 * datum::pi * y / Ty + by) - i;
+			fp = 1 + 2 * datum::pi * ay / Ty * cos(2 * datum::pi * y / Ty + by);
+			dy = -f / fp;
+			y = y + dy;
+		}
+
+		deform_y_at_refer(i) = y;
+	}
+
+
+	// 位置矩阵
+	x_mat.zeros(height, width);
+	y_mat.zeros(height, width);
+
+	for (int r = 0; r < height; ++r)
+	{
+		for (int c = 0; c < width; ++c)
+		{
+			x_mat(r, c) = deform_x_at_refer(c);
+			y_mat(r, c) = deform_y_at_refer(r);
+		}
+	}
+
+}
+
+
+
+/***********************************************************************************************************************/
+/***********************************************  二维高斯变形  *********************************************************/
+/***********************************************************************************************************************/
+
+
+void InverseMap::EstimateInitialPosition_2DGaussianDeformation(const double& ax, const double x0, const double& cx, const int& width, const double& ay, const double& y0, const double& cy, const int& height, mat& x_mat, mat& y_mat)
+{
+	// 估计初值
+	rowvec x = EstimateInitialPosition_GaussianDeformation(ax, x0, cx, width);
+	rowvec y = EstimateInitialPosition_GaussianDeformation(ay, y0, cy, height);
+
+	// 对矩阵赋值
+	x_mat.zeros(height, width);
+	y_mat.zeros(height, width);
+
+	for (int r = 0; r < height; ++r)
+	{
+		for (int c = 0; c < width; ++c)
+		{
+			x_mat(r, c) = x(c);
+			y_mat(r, c) = y(r);
+		}
+
+	}
+
+}
+
+
+void InverseMap::InverseMap_2DGaussianDeformation(const double& ax, const double x0, const double& cx, const int& width, const double& ay, const double& y0, const double& cy, const int& height, mat& x_mat, mat& y_mat)
+{
+	// 估计初值
+	rowvec deform_x_at_refer_estimate = EstimateInitialPosition_GaussianDeformation(ax, x0, cx, width);
+
+	// 使用牛顿迭代法
+	rowvec deform_x_at_refer = zeros<rowvec>(width);
+
+	for (int i = 0; i < width; ++i)
+	{
+		double x = deform_x_at_refer_estimate(i);	// 初值
+
+		// 迭代
+		double dx = 1;
+		double f, fp, t;
+		while (abs(dx) > 1e-4)
+		{
+			t = (x - x0) / cx;
+			f = x + ax * exp(-t * t) - i;
+			fp = 1 - 2 * ax / cx * t * exp(-t * t);
+			dx = -f / fp;
+			x = x + dx;
+		}
+
+		deform_x_at_refer(i) = x;
+	}
+
+
+	// 估计初值
+	rowvec deform_y_at_refer_estimate = EstimateInitialPosition_GaussianDeformation(ay, y0, cy, height);
+
+	// 使用牛顿迭代法
+	rowvec deform_y_at_refer = zeros<rowvec>(height);
+
+	for (int i = 0; i < height; ++i)
+	{
+		double y = deform_y_at_refer_estimate(i);	// 初值
+
+		// 迭代
+		double dy = 1;
+		double f, fp, t;
+		while (abs(dy) > 1e-4)
+		{
+			t = (y - y0) / cy;
+			f = y + ay * exp(-t * t) - i;
+			fp = 1 - 2 * ay / cy * t * exp(-t * t);
+			dy = -f / fp;
+			y = y + dy;
+		}
+
+		deform_y_at_refer(i) = y;
+	}
+
+
+	// 位置矩阵
+	x_mat.zeros(height, width);
+	y_mat.zeros(height, width);
+
+	for (int r = 0; r < height; ++r)
+	{
+		for (int c = 0; c < width; ++c)
+		{
+			x_mat(r, c) = deform_x_at_refer(c);
+			y_mat(r, c) = deform_y_at_refer(r);
+		}
+	}
+
+
+
+}
+
 

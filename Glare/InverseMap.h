@@ -27,7 +27,6 @@ public:
 		arma::mat& refer_x, arma::mat& refer_y);
 
 
-
 	/***********************************************************************************************************************/
 	/***********************************************    正弦变形    *********************************************************/
 	/***********************************************************************************************************************/
@@ -48,6 +47,7 @@ public:
 
 	// 使用牛顿迭代法确定正弦变形的反映射
 	static arma::rowvec InverseMap_SinusoidalDeformation(const double& a, const double T, const double& b, const int width);
+
 
 	/***********************************************************************************************************************/
 	/***********************************************    高斯变形    *********************************************************/
@@ -90,7 +90,6 @@ public:
 	static arma::rowvec InverseMap_PLCDeformation(const double& a, const double x0, const double& c, const int width);
 
 
-
 	/***********************************************************************************************************************/
 	/***********************************************    旋转变形    *********************************************************/
 	/***********************************************************************************************************************/
@@ -99,5 +98,21 @@ public:
 		arma::mat& refer_x, arma::mat& refer_y);
 
 
+	/***********************************************************************************************************************/
+	/***********************************************  二维正弦变形  *********************************************************/
+	/***********************************************************************************************************************/
+
+	static void EstimateInitialPosition_2DSinusoidalDeformation(const double& ax, const double Tx, const double& bx, const int& width, const double& ay, const double& Ty, const double& by, const int& height, arma::mat& x, arma::mat& y);
+
+	static void InverseMap_2DSinusoidalDeformation(const double& ax, const double Tx, const double& bx, const int& width, const double& ay, const double& Ty, const double& by, const int& height, arma::mat& x, arma::mat& y);
+
+
+	/***********************************************************************************************************************/
+	/***********************************************  二维高斯变形  *********************************************************/
+	/***********************************************************************************************************************/
+
+	static void EstimateInitialPosition_2DGaussianDeformation(const double& ax, const double x0, const double& cx, const int& width, const double& ay, const double& y0, const double& cy, const int& height, arma::mat& x, arma::mat& y);
+
+	static void InverseMap_2DGaussianDeformation(const double& ax, const double x0, const double& cx, const int& width, const double& ay, const double& y0, const double& cy, const int& height, arma::mat& x, arma::mat& y);
 
 };

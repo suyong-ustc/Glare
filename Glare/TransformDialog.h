@@ -54,7 +54,6 @@ private:
 	DeformationParameterPanel_Gaussian* panel_gaussian_;
 	DeformationParameterPanel_PLC* panel_plc_;
 	DeformationParameterPanel_Rotation* panel_rotation_;
-
 	DeformationParameterPanel_2DSinusoidal* panel_2d_sinusoidal_;
 	DeformationParameterPanel_2DGaussian* panel_2d_gaussian_;
 
@@ -84,6 +83,8 @@ private:
 	QPixmap RenderDeformedPixmap_Gaussian(bool using_interpolation, bool using_iteration);
 	QPixmap RenderDeformedPixmap_PLC(bool using_interpolation, bool using_iteration);
 	QPixmap RenderDeformedPixmap_Rotation(bool using_interpolation);
+	QPixmap RenderDeformedPixmap_2DSinusoidal(bool using_interpolation, bool using_iteration);
+	QPixmap RenderDeformedPixmap_2DGaussian(bool using_interpolation, bool using_iteration);
 
 
 

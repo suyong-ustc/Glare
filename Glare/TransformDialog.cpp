@@ -125,7 +125,6 @@ void TransformDialog::setupUI()
 	panel_gaussian_ = new DeformationParameterPanel_Gaussian;
 	panel_plc_ = new DeformationParameterPanel_PLC;
 	panel_rotation_ = new DeformationParameterPanel_Rotation;
-
 	panel_2d_sinusoidal_ = new DeformationParameterPanel_2DSinusoidal;
 	panel_2d_gaussian_ = new DeformationParameterPanel_2DGaussian;
 
@@ -254,11 +253,11 @@ void TransformDialog::connectSlots()
 					this, &TransformDialog::SlotShowDeformedImage);
 
 	// 二维正弦参数变化，重绘二维正弦变形图
-	is_ok = connect(panel_plc_, &DeformationParameterPanel_PLC::SignalParameterChanged,
+	is_ok = connect(panel_2d_sinusoidal_, &DeformationParameterPanel_2DSinusoidal::SignalParameterChanged,
 		this, &TransformDialog::SlotShowDeformedImage);
 
-	// 旋转参数变化，重绘旋转变形图
-	is_ok = connect(panel_rotation_, &DeformationParameterPanel_Rotation::SignalParameterChanged,
+	// 二维高斯参数变化，重绘二维高斯变形图
+	is_ok = connect(panel_2d_gaussian_, &DeformationParameterPanel_2DGaussian::SignalParameterChanged,
 		this, &TransformDialog::SlotShowDeformedImage);
 
 	// 导出图像
@@ -300,6 +299,10 @@ void TransformDialog::setDeformationType(const TransformType& transform_type)
 		deformation_type_list_->setCurrentRow(4);
 	else if (transform_type == ROTATION_DEFORMATION)
 		deformation_type_list_->setCurrentRow(5);
+	else if (transform_type == TWO_DIMENSIONAL_SINUSOIDAL_DEFORMATION)
+		deformation_type_list_->setCurrentRow(6);
+	else if (transform_type == TWO_DIMENSIONAL_GAUSSIAN_DEFORMATION)
+		deformation_type_list_->setCurrentRow(7);
 
 }
 
@@ -497,6 +500,73 @@ QPixmap TransformDialog::RenderDeformedPixmap_Rotation(bool using_interpolation)
 
 
 
+QPixmap TransformDialog::RenderDeformedPixmap_2DSinusoidal(bool using_interpolation, bool using_iteration)
+{
+	// 读取参数
+	const double ax = panel_2d_sinusoidal_->ax();
+	const double Tx = panel_2d_sinusoidal_->Tx();
+	const double bx = panel_2d_sinusoidal_->bx();
+
+	const double ay = panel_2d_sinusoidal_->ay();
+	const double Ty = panel_2d_sinusoidal_->Ty();
+	const double by = panel_2d_sinusoidal_->by();
+
+	// 图像尺寸
+	const int width = spinbox_image_width_->value();
+	const int height = spinbox_image_height_->value();
+
+	// 估计变形图像素点在参考图中的位置
+	mat xmat;
+	mat ymat;
+	if (using_iteration)
+		InverseMap::InverseMap_2DSinusoidalDeformation(ax, Tx, bx, width, ay, Ty, by, height, xmat, ymat);
+	else
+		InverseMap::EstimateInitialPosition_2DSinusoidalDeformation(ax, Tx, bx, width, ay, Ty, by, height, xmat, ymat);
+
+	// 渲染变形图
+	QPixmap pixmap = RenderPatternPixmap::RenderGaussianPatternPixmap(gaussian_pattern_, xmat, ymat, Qt::black, using_interpolation);
+
+	// 返回渲染图
+	return pixmap;
+
+
+}
+
+
+
+QPixmap TransformDialog::RenderDeformedPixmap_2DGaussian(bool using_interpolation, bool using_iteration)
+{
+	// 读取参数
+	const double ax = panel_2d_gaussian_->ax();
+	const double x0 = panel_2d_gaussian_->x0();
+	const double cx = panel_2d_gaussian_->cx();
+
+	const double ay = panel_2d_gaussian_->ay();
+	const double y0 = panel_2d_gaussian_->y0();
+	const double cy = panel_2d_gaussian_->cy();
+
+	// 图像尺寸
+	const int width = spinbox_image_width_->value();
+	const int height = spinbox_image_height_->value();
+
+	// 估计变形图像素点在参考图中的位置
+	mat xmat;
+	mat ymat;
+	if (using_iteration)
+		InverseMap::InverseMap_2DGaussianDeformation(ax, x0, cx, width, ay, y0, cy, height, xmat, ymat);
+	else
+		InverseMap::EstimateInitialPosition_2DGaussianDeformation(ax, x0, cx, width, ay, y0, cy, height, xmat, ymat);
+
+	// 渲染变形图
+	QPixmap pixmap = RenderPatternPixmap::RenderGaussianPatternPixmap(gaussian_pattern_, xmat, ymat, Qt::black, using_interpolation);
+
+	// 返回渲染图
+	return pixmap;
+
+}
+
+
+
 void TransformDialog::SlotShowReferenceImage()
 {
 	// 生成新的高斯散斑
@@ -538,6 +608,10 @@ void TransformDialog::SlotShowDeformedImage()
 		pixmap = RenderDeformedPixmap_PLC(true, false);
 	else if (deformation_type == ROTATION_DEFORMATION)
 		pixmap = RenderDeformedPixmap_Rotation(true);
+	else if (deformation_type == TWO_DIMENSIONAL_SINUSOIDAL_DEFORMATION)
+		pixmap = RenderDeformedPixmap_2DSinusoidal(true, false);
+	else if (deformation_type == TWO_DIMENSIONAL_GAUSSIAN_DEFORMATION)
+		pixmap = RenderDeformedPixmap_2DGaussian(true, false);
 
 	// 设置视图大小
 	if (abs(deformed_scene_->height() - spinbox_image_height_->value()) + 
@@ -593,6 +667,10 @@ void TransformDialog::SlotSaveImage()
 			deform_image_pixmap = RenderDeformedPixmap_PLC(false, true);
 		else if (deformation_type == ROTATION_DEFORMATION)
 			deform_image_pixmap = RenderDeformedPixmap_Rotation(false);
+		else if (deformation_type == TWO_DIMENSIONAL_SINUSOIDAL_DEFORMATION)
+			deform_image_pixmap = RenderDeformedPixmap_2DSinusoidal(false, true);
+		else if (deformation_type == TWO_DIMENSIONAL_GAUSSIAN_DEFORMATION)
+			deform_image_pixmap = RenderDeformedPixmap_2DGaussian(false, true);
 
 		deform_image_pixmap.save(deform_image_name, "BMP");
 	}

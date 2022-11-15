@@ -115,4 +115,23 @@ public:
 
 	static void InverseMap_2DGaussianDeformation(const double& ax, const double x0, const double& cx, const int& width, const double& ay, const double& y0, const double& cy, const int& height, arma::mat& x, arma::mat& y);
 
+
+	/***********************************************************************************************************************/
+	/***********************************************  交叉正弦变形  *********************************************************/
+	/***********************************************************************************************************************/
+
+	static void EstimateInitialPosition_CrossSinusoidalDeformation(const double& a, const double Tx, const double& bx, const double& Ty, const double& by, const int& width, const int& height, arma::mat& x, arma::mat& y);
+
+	static void InverseMap_CrossSinusoidalDeformation(const double& a, const double Tx, const double& bx, const double& Ty, const double& by, const int& width, const int& height, arma::mat& x, arma::mat& y);
+
+
+	/***********************************************************************************************************************/
+	/***********************************************  交叉高斯变形  *********************************************************/
+	/***********************************************************************************************************************/
+
+	static void EstimateInitialPosition_CrossGaussianDeformation(const double& a, const double x0, const double& c0, const double& y0, const double& cy, const int& width, const int& height, arma::mat& x, arma::mat& y);
+
+	static void InverseMap_CrossGaussianDeformation(const double& a, const double x0, const double& c0, const double& y0, const double& cy, const int& width, const int& height, arma::mat& x, arma::mat& y);
+
+
 };

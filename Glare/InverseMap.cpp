@@ -532,3 +532,209 @@ void InverseMap::InverseMap_2DGaussianDeformation(const double& ax, const double
 }
 
 
+
+/***********************************************************************************************************************/
+/***********************************************  交叉正弦变形  *********************************************************/
+/***********************************************************************************************************************/
+
+void InverseMap::EstimateInitialPosition_CrossSinusoidalDeformation(const double& a, const double Tx, const double& bx, const double& Ty, const double& by, const int& width, const int& height, mat& x_mat, mat& y_mat)
+{
+	// 初始化
+	mat deform_x_at_refer = LARGE_NEGTIVE_NUMBER * ones<mat>(height, width);
+
+
+	// 寻找变形图点在参考图位置的大概范围
+	const double xp_min = 0;
+	const double xp_max = width - 1;
+
+	const int delta_pad = 10;
+
+	int pad = 0;
+	int x_min = -pad;
+	int x_max = pad + width - 1;
+
+	while (x_min + SinusoidalDisplacement(a, Tx, bx, x_min) > xp_min ||
+		x_max + SinusoidalDisplacement(a, Tx, bx, x_max) < xp_max)
+	{
+		pad += delta_pad;
+		x_min = -pad;
+		x_max = pad + width - 1;
+	}
+
+
+	x_mat.zeros(height, width);
+	y_mat.zeros(height, width);
+
+	for (int r = 0; r < height; ++r)
+	{
+		// 参考图网格点在变形图位置
+		const rowvec refer_x = regspace<rowvec>(x_min, x_max);
+
+		const double aa = a * sin(2 * datum::pi * r / Ty + by);
+		const rowvec refer_x_at_deform = refer_x + SinusoidalDisplacement(aa, Tx, bx, refer_x);
+
+
+		// 估计参考图每一个像素点在参考图中的位置
+		double xl, xr;
+		for (int c = 0; c < width; ++c)
+		{
+			for (int i = 0; i < refer_x.n_elem - 1; ++i)
+			{
+				xl = refer_x_at_deform(i);
+				xr = refer_x_at_deform(i + 1);
+				if (c >= xl && c < xr)
+				{
+					x_mat(r, c) = refer_x(i) + (c - xl) / (xr - xl);
+					y_mat(r, c) = r;
+					break;
+				}
+			}
+		}
+
+
+	}
+
+
+}
+
+
+
+void InverseMap::InverseMap_CrossSinusoidalDeformation(const double& a, const double Tx, const double& bx, const double& Ty, const double& by, const int& width, const int& height, mat& x_mat, mat& y_mat)
+{
+	// 估计初值
+	mat x_init;
+	mat y_init;
+	EstimateInitialPosition_CrossSinusoidalDeformation(a, Tx, bx, Ty, by, width, height, x_init, y_init);
+
+	x_mat.zeros(height, width);
+	y_mat.zeros(height, width);
+
+	for (int r = 0; r < height; ++r)
+	{
+		for (int c = 0; c < width; ++c)
+		{
+			double x = x_init(r, c);	// 初值
+			double aa = a * sin(2 * datum::pi * r / Ty + by);
+
+			// 迭代
+			double dx = 1;
+			double f, fp;
+			while (abs(dx) > 1e-4)
+			{
+				f = x + aa * sin(2 * datum::pi * x / Tx + bx) - c;
+				fp = 1 + 2 * datum::pi * aa / Tx * cos(2 * datum::pi * x / Tx + bx);
+				dx = -f / fp;
+				x = x + dx;
+			}
+
+			x_mat(r, c) = x;
+			y_mat(r, c) = r;
+		}
+
+	}
+
+
+}
+
+
+/***********************************************************************************************************************/
+/***********************************************  交叉正弦变形  *********************************************************/
+/***********************************************************************************************************************/
+
+
+void InverseMap::EstimateInitialPosition_CrossGaussianDeformation(const double& a, const double x0, const double& cx, const double& y0, const double& cy, const int& width, const int& height, mat& x_mat, mat& y_mat)
+{
+	// 初始化
+	mat deform_x_at_refer = LARGE_NEGTIVE_NUMBER * ones<mat>(height, width);
+
+	// 寻找变形图点在参考图位置的大概范围
+	const double xp_min = 0;
+	const double xp_max = width - 1;
+
+	const int delta_pad = 10;
+
+	int pad = 0;
+	int x_min = -pad;
+	int x_max = pad + width - 1;
+
+	while (x_min + GaussianDisplacement(a, x0, cx, x_min) > xp_min ||
+		x_max + GaussianDisplacement(a, x0, cx, x_max) < xp_max)
+	{
+		pad += delta_pad;
+		x_min = -pad;
+		x_max = pad + width - 1;
+	}
+
+
+	x_mat.zeros(height, width);
+	y_mat.zeros(height, width);
+
+	for (int r = 0; r < height; ++r)
+	{
+		// 参考图网格点在变形图位置
+		const rowvec refer_x = regspace<rowvec>(x_min, x_max);
+
+		const double aa = a * exp(-(r - y0) * (r - y0) / (cy * cy));
+		const rowvec refer_x_at_deform = refer_x + GaussianDisplacement(aa, x0, cx, refer_x);
+
+
+		// 估计参考图每一个像素点在参考图中的位置
+		double xl, xr;
+		for (int c = 0; c < width; ++c)
+		{
+			for (int i = 0; i < refer_x.n_elem - 1; ++i)
+			{
+				xl = refer_x_at_deform(i);
+				xr = refer_x_at_deform(i + 1);
+				if (c >= xl && c < xr)
+				{
+					x_mat(r, c) = refer_x(i) + (c - xl) / (xr - xl);
+					y_mat(r, c) = r;
+					break;
+				}
+			}
+		}
+
+	}
+
+
+}
+
+
+void InverseMap::InverseMap_CrossGaussianDeformation(const double& a, const double x0, const double& cx, const double& y0, const double& cy, const int& width, const int& height, mat& x_mat, mat& y_mat)
+{
+	// 估计初值
+	mat x_init;
+	mat y_init;
+	EstimateInitialPosition_CrossGaussianDeformation(a, x0, cx, y0, cy, width, height, x_init, y_init);
+
+	x_mat.zeros(height, width);
+	y_mat.zeros(height, width);
+
+	for (int r = 0; r < height; ++r)
+	{
+		for (int c = 0; c < width; ++c)
+		{
+			double x = x_init(r,c);	// 初值
+
+			const double aa = a * exp(-(r - y0) * (r - y0) / (cy * cy));
+
+			// 迭代
+			double dx = 1;
+			double f, fp, t;
+			while (abs(dx) > 1e-4)
+			{
+				t = (x - x0) / cx;
+				f = x + aa * exp(-t * t) - c;
+				fp = 1 - 2 * aa / cx * t * exp(-t * t);
+				dx = -f / fp;
+				x = x + dx;
+			}
+
+			x_mat(r, c) = x;
+			y_mat(r, c) = r;
+		}
+
+	}
+
+}

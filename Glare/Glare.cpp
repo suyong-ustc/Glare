@@ -58,10 +58,12 @@ void Glare::setupMenuBar()
 	action_transform_sinusoidal_ = menu_transform->addAction(tr("Sinusoidal"));
 	action_transform_gaussian_ = menu_transform->addAction(tr("Gaussian"));
 	action_transform_plc_band_ = menu_transform->addAction(tr("PLC Band"));
-	menu_transform->addSeparator();
 	action_transform_rotation_ = menu_transform->addAction(tr("Rotation"));
+	menu_transform->addSeparator();
 	action_transform_2D_sinusoidal_ = menu_transform->addAction(tr("2D Sinusoidal"));
 	action_transform_2D_gaussian_ = menu_transform->addAction(tr("2D Gaussian"));
+	action_transform_cross_sinusoidal_ = menu_transform->addAction(tr("Cross Sinusoidal"));
+	action_transform_cross_gaussian_ = menu_transform->addAction(tr("Cross Gaussian"));
 
 	// 菜单：图像质量评价
 	QMenu *menu_assess = menuBar()->addMenu(tr("Assess"));
@@ -99,6 +101,8 @@ void Glare::ConnectSlots()
 	is_ok = connect(action_transform_rotation_, &QAction::triggered, this, &Glare::SlotTransform_Rotation);
 	is_ok = connect(action_transform_2D_sinusoidal_, &QAction::triggered, this, &Glare::SlotTransform_2DSinusoidal);
 	is_ok = connect(action_transform_2D_gaussian_, &QAction::triggered, this, &Glare::SlotTransform_2DGaussian);
+	is_ok = connect(action_transform_cross_sinusoidal_, &QAction::triggered, this, &Glare::SlotTransform_CrossSinusoidal);
+	is_ok = connect(action_transform_cross_gaussian_, &QAction::triggered, this, &Glare::SlotTransform_CrossGaussian);
 
 	is_ok = connect(action_assess_coverage_, &QAction::triggered, this, &Glare::SlotAssess_Coverage);
 	is_ok = connect(action_assess_autocorrelation_, &QAction::triggered, this, &Glare::SlotAssess_Autocorrelation);
@@ -169,6 +173,20 @@ void Glare::SlotTransform_2DSinusoidal()
 void Glare::SlotTransform_2DGaussian()
 {
 	transform_dialog_->setDeformationType(TWO_DIMENSIONAL_GAUSSIAN_DEFORMATION);
+	transform_dialog_->open();
+}
+
+
+void Glare::SlotTransform_CrossSinusoidal()
+{
+	transform_dialog_->setDeformationType(CROSS_SINUSOIDAL_DEFORMATION);
+	transform_dialog_->open();
+}
+
+
+void Glare::SlotTransform_CrossGaussian()
+{
+	transform_dialog_->setDeformationType(CROSS_GAUSSIAN_DEFORMATION);
 	transform_dialog_->open();
 }
 

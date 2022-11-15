@@ -36,9 +36,10 @@ private:
 	QAction* action_transform_gaussian_;
 	QAction* action_transform_plc_band_;
 	QAction* action_transform_rotation_;
-
 	QAction* action_transform_2D_sinusoidal_;
 	QAction* action_transform_2D_gaussian_;
+	QAction* action_transform_cross_sinusoidal_;
+	QAction* action_transform_cross_gaussian_;
 
 	QAction* action_assess_coverage_;
 	QAction* action_assess_autocorrelation_;
@@ -60,6 +61,8 @@ public slots:
 	void SlotTransform_Rotation();
 	void SlotTransform_2DSinusoidal();
 	void SlotTransform_2DGaussian();
+	void SlotTransform_CrossSinusoidal();
+	void SlotTransform_CrossGaussian();
 
 	void SlotAssess_Coverage();
 	void SlotAssess_Autocorrelation();

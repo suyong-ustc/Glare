@@ -41,7 +41,7 @@ void DeformationParameterPanel_Sinusoidal::setupUI()
 	parameter_layout->addWidget(label_T, 1, 0);
 
 	doublespinbox_T_ = new QDoubleSpinBox;
-	doublespinbox_T_->setRange(10, 500);
+	doublespinbox_T_->setRange(0, 500);
 	doublespinbox_T_->setValue(100);
 	parameter_layout->addWidget(doublespinbox_T_, 1, 1);
 

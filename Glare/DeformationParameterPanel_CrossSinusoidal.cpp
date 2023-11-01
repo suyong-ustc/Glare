@@ -41,7 +41,7 @@ void DeformationParameterPanel_CrossSinusoidal::setupUI()
 	parameter_layout->addWidget(label_Tx, 1, 0);
 
 	doublespinbox_Tx_ = new QDoubleSpinBox;
-	doublespinbox_Tx_->setRange(10, 500);
+	doublespinbox_Tx_->setRange(2, 500);
 	doublespinbox_Tx_->setValue(100);
 	parameter_layout->addWidget(doublespinbox_Tx_, 1, 1);
 
@@ -57,7 +57,7 @@ void DeformationParameterPanel_CrossSinusoidal::setupUI()
 	parameter_layout->addWidget(label_Ty, 3, 0);
 
 	doublespinbox_Ty_ = new QDoubleSpinBox;
-	doublespinbox_Ty_->setRange(10, 500);
+	doublespinbox_Ty_->setRange(2, 500);
 	doublespinbox_Ty_->setValue(100);
 	parameter_layout->addWidget(doublespinbox_Ty_, 3, 1);
 

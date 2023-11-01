@@ -64,6 +64,7 @@ void Glare::setupMenuBar()
 	action_transform_2D_gaussian_ = menu_transform->addAction(tr("2D Gaussian"));
 	action_transform_cross_sinusoidal_ = menu_transform->addAction(tr("Cross Sinusoidal"));
 	action_transform_cross_gaussian_ = menu_transform->addAction(tr("Cross Gaussian"));
+	action_transform_power_ = menu_transform->addAction(tr("Power"));
 
 	// 菜单：图像质量评价
 	QMenu *menu_assess = menuBar()->addMenu(tr("Assess"));
@@ -103,6 +104,7 @@ void Glare::ConnectSlots()
 	is_ok = connect(action_transform_2D_gaussian_, &QAction::triggered, this, &Glare::SlotTransform_2DGaussian);
 	is_ok = connect(action_transform_cross_sinusoidal_, &QAction::triggered, this, &Glare::SlotTransform_CrossSinusoidal);
 	is_ok = connect(action_transform_cross_gaussian_, &QAction::triggered, this, &Glare::SlotTransform_CrossGaussian);
+	is_ok = connect(action_transform_power_, &QAction::triggered, this, &Glare::SlotTransform_Power);
 
 	is_ok = connect(action_assess_coverage_, &QAction::triggered, this, &Glare::SlotAssess_Coverage);
 	is_ok = connect(action_assess_autocorrelation_, &QAction::triggered, this, &Glare::SlotAssess_Autocorrelation);
@@ -189,6 +191,14 @@ void Glare::SlotTransform_CrossGaussian()
 	transform_dialog_->setDeformationType(CROSS_GAUSSIAN_DEFORMATION);
 	transform_dialog_->open();
 }
+
+
+void Glare::SlotTransform_Power()
+{
+	transform_dialog_->setDeformationType(POWER_DEFORMATION);
+	transform_dialog_->open();
+}
+
 
 
 void Glare::SlotAssess_Coverage()

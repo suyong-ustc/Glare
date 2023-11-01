@@ -205,6 +205,9 @@
     <ClCompile Include="DeformationParameterPanel_CrossGaussian.cpp">
       <Filter>Source Files\TransformDialog\ParameterPanel</Filter>
     </ClCompile>
+    <ClCompile Include="DeformationParameterPanel_Power.cpp">
+      <Filter>Source Files\TransformDialog\ParameterPanel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="qcustomplot.h">
@@ -298,6 +301,9 @@
       <Filter>Header Files\TransformDialog\ParameterPanel</Filter>
     </QtMoc>
     <QtMoc Include="DeformationParameterPanel_CrossGaussian.h">
+      <Filter>Header Files\TransformDialog\ParameterPanel</Filter>
+    </QtMoc>
+    <QtMoc Include="DeformationParameterPanel_Power.h">
       <Filter>Header Files\TransformDialog\ParameterPanel</Filter>
     </QtMoc>
   </ItemGroup>

@@ -134,4 +134,23 @@ public:
 	static void InverseMap_CrossGaussianDeformation(const double& a, const double x0, const double& c0, const double& y0, const double& cy, const int& width, const int& height, arma::mat& x, arma::mat& y);
 
 
+	/***********************************************************************************************************************/
+	/***********************************************  幂指数变形  *********************************************************/
+	/***********************************************************************************************************************/
+
+	static double PowerDisplacement(const double& a, const double x0, const double& n, const double& x)
+	{
+		return a * pow(x - x0, n);
+	}
+
+	static arma::rowvec PowerDisplacement(const double& a, const double x0, const double& n, const arma::rowvec& x)
+	{
+		return a * arma::pow(x - x0, n);
+	}
+
+	static arma::rowvec EstimateInitialPosition_PowerDeformation(const double& a, const double x0, const double& n, const int& width);
+
+	static arma::rowvec InverseMap_PowerDeformation(const double& a, const double x0, const double& n, const int& width);
+
+
 };

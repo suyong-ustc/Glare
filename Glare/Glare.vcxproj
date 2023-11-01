@@ -107,6 +107,7 @@
     <ClCompile Include="DeformationParameterPanel_2DSinusoidal.cpp" />
     <ClCompile Include="DeformationParameterPanel_CrossGaussian.cpp" />
     <ClCompile Include="DeformationParameterPanel_CrossSinusoidal.cpp" />
+    <ClCompile Include="DeformationParameterPanel_Power.cpp" />
     <ClCompile Include="PolygonSpeckleItem.cpp" />
     <ClCompile Include="PolygonSpecklePattern.cpp" />
     <ClCompile Include="qcustomplot.cpp" />
@@ -188,6 +189,7 @@
     <QtMoc Include="DeformationParameterPanel_2DSinusoidal.h" />
     <QtMoc Include="DeformationParameterPanel_CrossSinusoidal.h" />
     <QtMoc Include="DeformationParameterPanel_CrossGaussian.h" />
+    <QtMoc Include="DeformationParameterPanel_Power.h" />
     <ClInclude Include="EllipseSpeckleItem.h" />
     <ClInclude Include="EllipseSpecklePattern.h" />
     <ClInclude Include="GaussianPattern.h" />

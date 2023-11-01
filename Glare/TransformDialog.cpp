@@ -129,6 +129,7 @@ void TransformDialog::setupUI()
 	panel_2d_gaussian_ = new DeformationParameterPanel_2DGaussian;
 	panel_cross_sinusoidal_ = new DeformationParameterPanel_CrossSinusoidal;
 	panel_cross_gaussian_ = new DeformationParameterPanel_CrossGaussian;
+	panel_power_ = new DeformationParameterPanel_Power;
 
 	deformation_parameter_panel_->addWidget(panel_translation_);
 	deformation_parameter_panel_->addWidget(panel_elongation_);
@@ -140,6 +141,7 @@ void TransformDialog::setupUI()
 	deformation_parameter_panel_->addWidget(panel_2d_gaussian_);
 	deformation_parameter_panel_->addWidget(panel_cross_sinusoidal_);
 	deformation_parameter_panel_->addWidget(panel_cross_gaussian_);
+	deformation_parameter_panel_->addWidget(panel_power_);
 	deformation_parameter_panel_->setCurrentIndex(0);
 
 	// 导出图片
@@ -179,6 +181,7 @@ void TransformDialog::setupUI()
 	deformation_type_list_->insertItem(7, tr("2D Gaussian"));
 	deformation_type_list_->insertItem(8, tr("Cross Sinusoidal"));
 	deformation_type_list_->insertItem(9, tr("Cross Gaussian"));
+	deformation_type_list_->insertItem(10, tr("Power"));
 
 	// 导出
 	layout->addWidget(reference_view_, 0, 0);
@@ -274,6 +277,10 @@ void TransformDialog::connectSlots()
 	is_ok = connect(panel_cross_gaussian_, &DeformationParameterPanel_CrossGaussian::SignalParameterChanged,
 		this, &TransformDialog::SlotShowDeformedImage);
 
+	// 幂指数参数变化，重绘交叉高斯变形图
+	is_ok = connect(panel_power_, &DeformationParameterPanel_Power::SignalParameterChanged,
+		this, &TransformDialog::SlotShowDeformedImage);
+
 	// 导出图像
 	is_ok = connect(pushbutton_save_image_, &QPushButton::clicked,
 					this, &TransformDialog::SlotSaveImage);
@@ -321,6 +328,8 @@ void TransformDialog::setDeformationType(const TransformType& transform_type)
 		deformation_type_list_->setCurrentRow(8);
 	else if (transform_type == CROSS_GAUSSIAN_DEFORMATION)
 		deformation_type_list_->setCurrentRow(9);
+	else if (transform_type == POWER_DEFORMATION)
+		deformation_type_list_->setCurrentRow(10);
 
 }
 
@@ -645,6 +654,39 @@ QPixmap TransformDialog::RenderDeformedPixmap_CrossGaussian(bool using_interpola
 
 
 
+QPixmap TransformDialog::RenderDeformedPixmap_Power(bool using_interpolation, bool using_iteration)
+{
+	// 读取参数
+	const double a = panel_power_->a();
+	const double x0 = panel_power_->x0();
+	const double n = panel_power_->n();
+
+	// 图像尺寸
+	const int width = spinbox_image_width_->value();
+	const int height = spinbox_image_height_->value();
+
+	// 估计变形图像素点在参考图中的位置
+	rowvec deform_x = regspace<rowvec>(0, width - 1);
+	rowvec refer_x;
+	if (using_iteration)
+		refer_x = InverseMap::InverseMap_PowerDeformation(a, x0, n, width);
+	else
+		refer_x = InverseMap::EstimateInitialPosition_PowerDeformation(a, x0, n, width);
+
+	mat xmat = repmat(refer_x, height, 1);
+
+	vec refer_y = regspace<vec>(0, height - 1);
+	mat ymat = repmat(refer_y, 1, width);
+
+	// 渲染变形图
+	QPixmap pixmap = RenderPatternPixmap::RenderGaussianPatternPixmap(gaussian_pattern_, xmat, ymat, Qt::black, using_interpolation);
+
+	// 返回渲染图
+	return pixmap;
+}
+
+
+
 void TransformDialog::SlotShowReferenceImage()
 {
 	// 生成新的高斯散斑
@@ -694,6 +736,8 @@ void TransformDialog::SlotShowDeformedImage()
 		pixmap = RenderDeformedPixmap_CrossSinusoidal(true, false);
 	else if (deformation_type == CROSS_GAUSSIAN_DEFORMATION)
 		pixmap = RenderDeformedPixmap_CrossGaussian(true, false);
+	else if (deformation_type == POWER_DEFORMATION)
+		pixmap = RenderDeformedPixmap_Power(true, false);
 
 	// 设置视图大小
 	if (abs(deformed_scene_->height() - spinbox_image_height_->value()) + 
@@ -757,6 +801,8 @@ void TransformDialog::SlotSaveImage()
 			deform_image_pixmap = RenderDeformedPixmap_CrossSinusoidal(false, true);
 		else if (deformation_type == CROSS_GAUSSIAN_DEFORMATION)
 			deform_image_pixmap = RenderDeformedPixmap_CrossGaussian(false, true);
+		else if (deformation_type == POWER_DEFORMATION)
+			deform_image_pixmap = RenderDeformedPixmap_Power(false, true);
 
 		deform_image_pixmap.save(deform_image_name, "BMP");
 	}

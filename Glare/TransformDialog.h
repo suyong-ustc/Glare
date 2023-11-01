@@ -19,6 +19,7 @@
 #include "DeformationParameterPanel_2DGaussian.h"
 #include "DeformationParameterPanel_CrossSinusoidal.h"
 #include "DeformationParameterPanel_CrossGaussian.h"
+#include "DeformationParameterPanel_Power.h"
 #include "ExportSeriesImageDialog.h"
 
 
@@ -60,6 +61,7 @@ private:
 	DeformationParameterPanel_2DGaussian* panel_2d_gaussian_;
 	DeformationParameterPanel_CrossSinusoidal* panel_cross_sinusoidal_;
 	DeformationParameterPanel_CrossGaussian* panel_cross_gaussian_;
+	DeformationParameterPanel_Power* panel_power_;
 
 	// 变形形式选择
 	QListWidget* deformation_type_list_;
@@ -91,6 +93,7 @@ private:
 	QPixmap RenderDeformedPixmap_2DGaussian(bool using_interpolation, bool using_iteration);
 	QPixmap RenderDeformedPixmap_CrossSinusoidal(bool using_interpolation, bool using_iteration);
 	QPixmap RenderDeformedPixmap_CrossGaussian(bool using_interpolation, bool using_iteration);
+	QPixmap RenderDeformedPixmap_Power(bool using_interpolation, bool using_iteration);
 
 
 

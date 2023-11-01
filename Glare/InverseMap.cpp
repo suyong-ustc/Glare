@@ -638,7 +638,7 @@ void InverseMap::InverseMap_CrossSinusoidalDeformation(const double& a, const do
 
 
 /***********************************************************************************************************************/
-/***********************************************  交叉正弦变形  *********************************************************/
+/***********************************************  交叉高斯变形  *********************************************************/
 /***********************************************************************************************************************/
 
 
@@ -737,4 +737,93 @@ void InverseMap::InverseMap_CrossGaussianDeformation(const double& a, const doub
 
 	}
 
+}
+
+
+
+/***********************************************************************************************************************/
+/***********************************************  幂指数变形  *********************************************************/
+/***********************************************************************************************************************/
+
+
+
+rowvec InverseMap::EstimateInitialPosition_PowerDeformation(const double& a, const double x0, const double& n, const int& width)
+{
+	// 初始化
+	rowvec deform_x_at_refer = LARGE_NEGTIVE_NUMBER * ones<rowvec>(width);
+
+
+	// 寻找变形图点在参考图位置的大概范围
+	const double xp_min = 0;
+	const double xp_max = width - 1;
+
+	const int delta_pad = 10;
+
+	int pad = 0;
+	int x_min = -pad;
+	int x_max = pad + width - 1;
+
+	while (x_min + PowerDisplacement(a, x0, n, x_min) > xp_min ||
+		x_max + PowerDisplacement(a, x0, n, x_max) < xp_max)
+	{
+		pad += delta_pad;
+		x_min = -pad;
+		x_max = pad + width - 1;
+	}
+
+
+	// 参考图网格点在变形图位置
+	const rowvec refer_x = regspace<rowvec>(x_min, x_max);
+	const rowvec refer_x_at_deform = refer_x + PowerDisplacement(a, x0, n, refer_x);
+
+
+	// 估计参考图每一个像素点在参考图中的位置
+	double xl, xr;
+	for (int c = 0; c < width; ++c)
+	{
+		for (int i = 0; i < refer_x.n_elem - 1; ++i)
+		{
+			xl = refer_x_at_deform(i);
+			xr = refer_x_at_deform(i + 1);
+			if (c >= xl && c < xr)
+			{
+				deform_x_at_refer(c) = refer_x(i) + (c - xl) / (xr - xl);
+				const double a = deform_x_at_refer(c);
+				break;
+			}
+		}
+	}
+
+	return deform_x_at_refer;
+}
+
+
+
+rowvec InverseMap::InverseMap_PowerDeformation(const double& a, const double x0, const double& n, const int& width)
+{
+	// 估计初值
+	rowvec deform_x_at_refer_estimate = InverseMap::EstimateInitialPosition_PowerDeformation(a, x0, n, width);
+
+	// 使用牛顿迭代法
+	rowvec deform_x_at_refer = zeros<rowvec>(width);
+
+	for (int i = 0; i < width; ++i)
+	{
+		double x = deform_x_at_refer_estimate(i);	// 初值
+
+		// 迭代
+		double dx = 1;
+		double f, fp, t;
+		while (abs(dx) > 1e-4)
+		{
+			f = x + a * pow(x - x0, n) - i;
+			fp = 1 + a * n * pow(x - x0, n - 1);
+			dx = -f / fp;
+			x = x + dx;
+		}
+
+		deform_x_at_refer(i) = x;
+	}
+
+	return deform_x_at_refer;
 }

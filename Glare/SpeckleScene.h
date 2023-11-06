@@ -1,9 +1,9 @@
 #pragma once
 
 #include <QGraphicsScene>
-#include "EllipseSpecklePattern.h"
-#include "GaussianPattern.h"
-#include "PolygonSpecklePattern.h"
+#include "Pattern\EllipseSpecklePattern.h"
+#include "Pattern\GaussianPattern.h"
+#include "Pattern\PolygonSpecklePattern.h"
 #include "XianType.h"
 
 

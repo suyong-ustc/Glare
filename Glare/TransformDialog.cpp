@@ -4,7 +4,7 @@
 #include <QGraphicsPixmapItem>
 #include <QLabel>
 #include <armadillo>
-#include "RenderPatternPixmap.h"
+#include "Pattern\RenderPatternPixmap.h"
 #include "InverseMap.h"
 using namespace arma;
 

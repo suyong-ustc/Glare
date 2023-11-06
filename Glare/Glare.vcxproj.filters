@@ -30,15 +30,6 @@
     <Filter Include="Header Files\PatternDialog">
       <UniqueIdentifier>{03e3c7ee-99a3-4668-8cb7-055cc5d64f2e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\RecommendDialog">
-      <UniqueIdentifier>{67ca676c-9b78-48d9-abf6-d572bfb909de}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\SpecklePattern">
-      <UniqueIdentifier>{2b5605e8-d9dd-4db7-b53a-e4a8b584dc0e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\TransformDialog">
-      <UniqueIdentifier>{baa7f610-5dd4-42ee-8613-1d196d2e89d4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\AssessDialog">
       <UniqueIdentifier>{8d859479-58e4-4ebf-821b-3fc882b1abd2}</UniqueIdentifier>
     </Filter>
@@ -51,8 +42,32 @@
     <Filter Include="Header Files\PatternDialog\SceneViewItem\Item">
       <UniqueIdentifier>{6332904d-17ad-47d9-9011-6ef511131172}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\TransformDialog\ExportSeriesDialog">
+    <Filter Include="Header Files\Recommendation">
+      <UniqueIdentifier>{67ca676c-9b78-48d9-abf6-d572bfb909de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Recommendation">
+      <UniqueIdentifier>{88746d09-81a7-4e1e-a9c2-2ba6f5a90f6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Transformation">
+      <UniqueIdentifier>{baa7f610-5dd4-42ee-8613-1d196d2e89d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Transformation\ExportSeriesDialog">
       <UniqueIdentifier>{95d826d9-dda9-4474-947e-6705a8dcc4b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Transformation\ParameterPanel">
+      <UniqueIdentifier>{c84859e4-7f8d-48f0-b69e-17c5dffbc8a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Transformation">
+      <UniqueIdentifier>{812a98e0-903d-412d-a44d-44c60ea56c96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Transformation\ExportSeriesDialog">
+      <UniqueIdentifier>{97346b9b-a1c3-44f1-b7f4-10c4cf4e9069}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Transformation\ParameterPanel">
+      <UniqueIdentifier>{d366a431-7e7a-431c-b54f-0218b7fe3daa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Pattern">
+      <UniqueIdentifier>{2b5605e8-d9dd-4db7-b53a-e4a8b584dc0e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\PatternDialog">
       <UniqueIdentifier>{c68221f1-4678-413c-a3d4-22de3c4f1c5c}</UniqueIdentifier>
@@ -63,23 +78,8 @@
     <Filter Include="Source Files\PatternDialog\SceneViewItem\Item">
       <UniqueIdentifier>{1112a779-478a-4fce-bd2b-a385dbe59bcb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\RecommendDialog">
-      <UniqueIdentifier>{88746d09-81a7-4e1e-a9c2-2ba6f5a90f6e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\SpecklePattern">
+    <Filter Include="Source Files\Pattern">
       <UniqueIdentifier>{7e38449e-e6b7-479f-8ef9-a9dc60c147a6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\TransformDialog">
-      <UniqueIdentifier>{812a98e0-903d-412d-a44d-44c60ea56c96}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\TransformDialog\ExportSeriesDialog">
-      <UniqueIdentifier>{97346b9b-a1c3-44f1-b7f4-10c4cf4e9069}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\TransformDialog\ParameterPanel">
-      <UniqueIdentifier>{c84859e4-7f8d-48f0-b69e-17c5dffbc8a2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\TransformDialog\ParameterPanel">
-      <UniqueIdentifier>{d366a431-7e7a-431c-b54f-0218b7fe3daa}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -133,80 +133,80 @@
     <ClCompile Include="CentralWidget.cpp">
       <Filter>Source Files\PatternDialog</Filter>
     </ClCompile>
-    <ClCompile Include="RecommendDialog.cpp">
-      <Filter>Source Files\RecommendDialog</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderPatternPixmap.cpp">
-      <Filter>Source Files\SpecklePattern</Filter>
-    </ClCompile>
-    <ClCompile Include="PolygonSpecklePattern.cpp">
-      <Filter>Source Files\SpecklePattern</Filter>
-    </ClCompile>
-    <ClCompile Include="GaussianPattern.cpp">
-      <Filter>Source Files\SpecklePattern</Filter>
-    </ClCompile>
-    <ClCompile Include="EllipseSpecklePattern.cpp">
-      <Filter>Source Files\SpecklePattern</Filter>
-    </ClCompile>
     <ClCompile Include="ExportSeriesImageDialog.cpp">
-      <Filter>Source Files\TransformDialog\ExportSeriesDialog</Filter>
+      <Filter>Source Files\Transformation\ExportSeriesDialog</Filter>
     </ClCompile>
     <ClCompile Include="ExportSeriesImageWidget_Elongation.cpp">
-      <Filter>Source Files\TransformDialog\ExportSeriesDialog</Filter>
+      <Filter>Source Files\Transformation\ExportSeriesDialog</Filter>
     </ClCompile>
     <ClCompile Include="ExportSeriesImageWidget_Gaussian.cpp">
-      <Filter>Source Files\TransformDialog\ExportSeriesDialog</Filter>
+      <Filter>Source Files\Transformation\ExportSeriesDialog</Filter>
     </ClCompile>
     <ClCompile Include="ExportSeriesImageWidget_PLC.cpp">
-      <Filter>Source Files\TransformDialog\ExportSeriesDialog</Filter>
+      <Filter>Source Files\Transformation\ExportSeriesDialog</Filter>
     </ClCompile>
     <ClCompile Include="ExportSeriesImageWidget_Rotation.cpp">
-      <Filter>Source Files\TransformDialog\ExportSeriesDialog</Filter>
+      <Filter>Source Files\Transformation\ExportSeriesDialog</Filter>
     </ClCompile>
     <ClCompile Include="ExportSeriesImageWidget_Sinusoidal.cpp">
-      <Filter>Source Files\TransformDialog\ExportSeriesDialog</Filter>
+      <Filter>Source Files\Transformation\ExportSeriesDialog</Filter>
     </ClCompile>
     <ClCompile Include="ExportSeriesImageWidget_Translation.cpp">
-      <Filter>Source Files\TransformDialog\ExportSeriesDialog</Filter>
+      <Filter>Source Files\Transformation\ExportSeriesDialog</Filter>
     </ClCompile>
     <ClCompile Include="InverseMap.cpp">
-      <Filter>Source Files\TransformDialog</Filter>
+      <Filter>Source Files\Transformation</Filter>
     </ClCompile>
     <ClCompile Include="TransformDialog.cpp">
-      <Filter>Source Files\TransformDialog</Filter>
+      <Filter>Source Files\Transformation</Filter>
     </ClCompile>
     <ClCompile Include="DeformationParameterPanel_2DGaussian.cpp">
-      <Filter>Source Files\TransformDialog\ParameterPanel</Filter>
+      <Filter>Source Files\Transformation\ParameterPanel</Filter>
     </ClCompile>
     <ClCompile Include="DeformationParameterPanel_2DSinusoidal.cpp">
-      <Filter>Source Files\TransformDialog\ParameterPanel</Filter>
+      <Filter>Source Files\Transformation\ParameterPanel</Filter>
     </ClCompile>
     <ClCompile Include="DeformationParameterPanel_CrossSinusoidal.cpp">
-      <Filter>Source Files\TransformDialog\ParameterPanel</Filter>
+      <Filter>Source Files\Transformation\ParameterPanel</Filter>
     </ClCompile>
     <ClCompile Include="DeformationParameterPanel_Elongation.cpp">
-      <Filter>Source Files\TransformDialog\ParameterPanel</Filter>
+      <Filter>Source Files\Transformation\ParameterPanel</Filter>
     </ClCompile>
     <ClCompile Include="DeformationParameterPanel_Gaussian.cpp">
-      <Filter>Source Files\TransformDialog\ParameterPanel</Filter>
+      <Filter>Source Files\Transformation\ParameterPanel</Filter>
     </ClCompile>
     <ClCompile Include="DeformationParameterPanel_PLC.cpp">
-      <Filter>Source Files\TransformDialog\ParameterPanel</Filter>
+      <Filter>Source Files\Transformation\ParameterPanel</Filter>
     </ClCompile>
     <ClCompile Include="DeformationParameterPanel_Rotation.cpp">
-      <Filter>Source Files\TransformDialog\ParameterPanel</Filter>
+      <Filter>Source Files\Transformation\ParameterPanel</Filter>
     </ClCompile>
     <ClCompile Include="DeformationParameterPanel_Sinusoidal.cpp">
-      <Filter>Source Files\TransformDialog\ParameterPanel</Filter>
+      <Filter>Source Files\Transformation\ParameterPanel</Filter>
     </ClCompile>
     <ClCompile Include="DeformationParameterPanel_Translation.cpp">
-      <Filter>Source Files\TransformDialog\ParameterPanel</Filter>
+      <Filter>Source Files\Transformation\ParameterPanel</Filter>
     </ClCompile>
     <ClCompile Include="DeformationParameterPanel_CrossGaussian.cpp">
-      <Filter>Source Files\TransformDialog\ParameterPanel</Filter>
+      <Filter>Source Files\Transformation\ParameterPanel</Filter>
     </ClCompile>
     <ClCompile Include="DeformationParameterPanel_Power.cpp">
-      <Filter>Source Files\TransformDialog\ParameterPanel</Filter>
+      <Filter>Source Files\Transformation\ParameterPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="Recommendation\RecommendDialog.cpp">
+      <Filter>Source Files\Recommendation</Filter>
+    </ClCompile>
+    <ClCompile Include="Pattern\EllipseSpecklePattern.cpp">
+      <Filter>Source Files\Pattern</Filter>
+    </ClCompile>
+    <ClCompile Include="Pattern\GaussianPattern.cpp">
+      <Filter>Source Files\Pattern</Filter>
+    </ClCompile>
+    <ClCompile Include="Pattern\PolygonSpecklePattern.cpp">
+      <Filter>Source Files\Pattern</Filter>
+    </ClCompile>
+    <ClCompile Include="Pattern\RenderPatternPixmap.cpp">
+      <Filter>Source Files\Pattern</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -243,68 +243,68 @@
     <QtMoc Include="CentralWidget.h">
       <Filter>Header Files\PatternDialog</Filter>
     </QtMoc>
-    <QtMoc Include="RecommendDialog.h">
-      <Filter>Header Files\RecommendDialog</Filter>
-    </QtMoc>
-    <QtMoc Include="RenderPatternPixmap.h">
-      <Filter>Header Files\SpecklePattern</Filter>
-    </QtMoc>
     <QtMoc Include="ExportSeriesImageDialog.h">
-      <Filter>Header Files\TransformDialog\ExportSeriesDialog</Filter>
+      <Filter>Header Files\Transformation\ExportSeriesDialog</Filter>
     </QtMoc>
     <QtMoc Include="ExportSeriesImageWidget_Elongation.h">
-      <Filter>Header Files\TransformDialog\ExportSeriesDialog</Filter>
+      <Filter>Header Files\Transformation\ExportSeriesDialog</Filter>
     </QtMoc>
     <QtMoc Include="ExportSeriesImageWidget_Gaussian.h">
-      <Filter>Header Files\TransformDialog\ExportSeriesDialog</Filter>
+      <Filter>Header Files\Transformation\ExportSeriesDialog</Filter>
     </QtMoc>
     <QtMoc Include="ExportSeriesImageWidget_PLC.h">
-      <Filter>Header Files\TransformDialog\ExportSeriesDialog</Filter>
+      <Filter>Header Files\Transformation\ExportSeriesDialog</Filter>
     </QtMoc>
     <QtMoc Include="ExportSeriesImageWidget_Rotation.h">
-      <Filter>Header Files\TransformDialog\ExportSeriesDialog</Filter>
+      <Filter>Header Files\Transformation\ExportSeriesDialog</Filter>
     </QtMoc>
     <QtMoc Include="ExportSeriesImageWidget_Sinusoidal.h">
-      <Filter>Header Files\TransformDialog\ExportSeriesDialog</Filter>
+      <Filter>Header Files\Transformation\ExportSeriesDialog</Filter>
     </QtMoc>
     <QtMoc Include="ExportSeriesImageWidget_Translation.h">
-      <Filter>Header Files\TransformDialog\ExportSeriesDialog</Filter>
+      <Filter>Header Files\Transformation\ExportSeriesDialog</Filter>
     </QtMoc>
     <QtMoc Include="TransformDialog.h">
-      <Filter>Header Files\TransformDialog</Filter>
+      <Filter>Header Files\Transformation</Filter>
     </QtMoc>
     <QtMoc Include="DeformationParameterPanel_2DGaussian.h">
-      <Filter>Header Files\TransformDialog\ParameterPanel</Filter>
+      <Filter>Header Files\Transformation\ParameterPanel</Filter>
     </QtMoc>
     <QtMoc Include="DeformationParameterPanel_2DSinusoidal.h">
-      <Filter>Header Files\TransformDialog\ParameterPanel</Filter>
+      <Filter>Header Files\Transformation\ParameterPanel</Filter>
     </QtMoc>
     <QtMoc Include="DeformationParameterPanel_CrossSinusoidal.h">
-      <Filter>Header Files\TransformDialog\ParameterPanel</Filter>
+      <Filter>Header Files\Transformation\ParameterPanel</Filter>
     </QtMoc>
     <QtMoc Include="DeformationParameterPanel_Elongation.h">
-      <Filter>Header Files\TransformDialog\ParameterPanel</Filter>
+      <Filter>Header Files\Transformation\ParameterPanel</Filter>
     </QtMoc>
     <QtMoc Include="DeformationParameterPanel_Gaussian.h">
-      <Filter>Header Files\TransformDialog\ParameterPanel</Filter>
+      <Filter>Header Files\Transformation\ParameterPanel</Filter>
     </QtMoc>
     <QtMoc Include="DeformationParameterPanel_PLC.h">
-      <Filter>Header Files\TransformDialog\ParameterPanel</Filter>
+      <Filter>Header Files\Transformation\ParameterPanel</Filter>
     </QtMoc>
     <QtMoc Include="DeformationParameterPanel_Rotation.h">
-      <Filter>Header Files\TransformDialog\ParameterPanel</Filter>
+      <Filter>Header Files\Transformation\ParameterPanel</Filter>
     </QtMoc>
     <QtMoc Include="DeformationParameterPanel_Sinusoidal.h">
-      <Filter>Header Files\TransformDialog\ParameterPanel</Filter>
+      <Filter>Header Files\Transformation\ParameterPanel</Filter>
     </QtMoc>
     <QtMoc Include="DeformationParameterPanel_Translation.h">
-      <Filter>Header Files\TransformDialog\ParameterPanel</Filter>
+      <Filter>Header Files\Transformation\ParameterPanel</Filter>
     </QtMoc>
     <QtMoc Include="DeformationParameterPanel_CrossGaussian.h">
-      <Filter>Header Files\TransformDialog\ParameterPanel</Filter>
+      <Filter>Header Files\Transformation\ParameterPanel</Filter>
     </QtMoc>
     <QtMoc Include="DeformationParameterPanel_Power.h">
-      <Filter>Header Files\TransformDialog\ParameterPanel</Filter>
+      <Filter>Header Files\Transformation\ParameterPanel</Filter>
+    </QtMoc>
+    <QtMoc Include="Recommendation\RecommendDialog.h">
+      <Filter>Header Files\Recommendation</Filter>
+    </QtMoc>
+    <QtMoc Include="Pattern\RenderPatternPixmap.h">
+      <Filter>Header Files\Pattern</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
@@ -317,17 +317,17 @@
     <ClInclude Include="PolygonSpeckleItem.h">
       <Filter>Header Files\PatternDialog\SceneViewItem\Item</Filter>
     </ClInclude>
-    <ClInclude Include="EllipseSpecklePattern.h">
-      <Filter>Header Files\SpecklePattern</Filter>
-    </ClInclude>
-    <ClInclude Include="GaussianPattern.h">
-      <Filter>Header Files\SpecklePattern</Filter>
-    </ClInclude>
-    <ClInclude Include="PolygonSpecklePattern.h">
-      <Filter>Header Files\SpecklePattern</Filter>
-    </ClInclude>
     <ClInclude Include="InverseMap.h">
-      <Filter>Header Files\TransformDialog</Filter>
+      <Filter>Header Files\Transformation</Filter>
+    </ClInclude>
+    <ClInclude Include="Pattern\EllipseSpecklePattern.h">
+      <Filter>Header Files\Pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="Pattern\GaussianPattern.h">
+      <Filter>Header Files\Pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="Pattern\PolygonSpecklePattern.h">
+      <Filter>Header Files\Pattern</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

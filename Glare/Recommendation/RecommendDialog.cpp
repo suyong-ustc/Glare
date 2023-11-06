@@ -9,7 +9,7 @@
 #include <QPdfWriter>
 #include <QVBoxLayout>
 #include <armadillo>
-#include "EllipseSpeckleItem.h"
+#include "..\EllipseSpeckleItem.h"
 
 using namespace arma;
 

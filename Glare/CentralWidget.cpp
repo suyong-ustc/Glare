@@ -4,7 +4,7 @@
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QVBoxLayout>
-#include "RenderPatternPixmap.h"
+#include "Pattern\RenderPatternPixmap.h"
 #include "XianType.h"
 
 

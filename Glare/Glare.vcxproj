@@ -108,11 +108,13 @@
     <ClCompile Include="DeformationParameterPanel_CrossGaussian.cpp" />
     <ClCompile Include="DeformationParameterPanel_CrossSinusoidal.cpp" />
     <ClCompile Include="DeformationParameterPanel_Power.cpp" />
+    <ClCompile Include="Pattern\EllipseSpecklePattern.cpp" />
+    <ClCompile Include="Pattern\GaussianPattern.cpp" />
+    <ClCompile Include="Pattern\PolygonSpecklePattern.cpp" />
+    <ClCompile Include="Pattern\RenderPatternPixmap.cpp" />
     <ClCompile Include="PolygonSpeckleItem.cpp" />
-    <ClCompile Include="PolygonSpecklePattern.cpp" />
     <ClCompile Include="qcustomplot.cpp" />
-    <ClCompile Include="RecommendDialog.cpp" />
-    <ClCompile Include="RenderPatternPixmap.cpp" />
+    <ClCompile Include="Recommendation\RecommendDialog.cpp" />
     <ClCompile Include="SpeckleScene.cpp" />
     <ClCompile Include="SpeckleView.cpp" />
     <ClCompile Include="TransformDialog.cpp" />
@@ -133,7 +135,6 @@
     <ClCompile Include="DeformationParameterPanel_Sinusoidal.cpp" />
     <ClCompile Include="DeformationParameterPanel_Translation.cpp" />
     <ClCompile Include="EllipseSpeckleItem.cpp" />
-    <ClCompile Include="EllipseSpecklePattern.cpp" />
     <ClCompile Include="ExportSeriesImageDialog.cpp" />
     <ClCompile Include="ExportSeriesImageWidget_Elongation.cpp" />
     <ClCompile Include="ExportSeriesImageWidget_Gaussian.cpp" />
@@ -141,7 +142,6 @@
     <ClCompile Include="ExportSeriesImageWidget_Rotation.cpp" />
     <ClCompile Include="ExportSeriesImageWidget_Sinusoidal.cpp" />
     <ClCompile Include="ExportSeriesImageWidget_Translation.cpp" />
-    <ClCompile Include="GaussianPattern.cpp" />
     <ClCompile Include="InverseMap.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -191,18 +191,18 @@
     <QtMoc Include="DeformationParameterPanel_CrossGaussian.h" />
     <QtMoc Include="DeformationParameterPanel_Power.h" />
     <ClInclude Include="EllipseSpeckleItem.h" />
-    <ClInclude Include="EllipseSpecklePattern.h" />
-    <ClInclude Include="GaussianPattern.h" />
     <ClInclude Include="InverseMap.h" />
+    <ClInclude Include="Pattern\EllipseSpecklePattern.h" />
+    <ClInclude Include="Pattern\GaussianPattern.h" />
+    <ClInclude Include="Pattern\PolygonSpecklePattern.h" />
+    <QtMoc Include="Pattern\RenderPatternPixmap.h" />
     <ClInclude Include="PolygonSpeckleItem.h" />
-    <ClInclude Include="PolygonSpecklePattern.h" />
+    <QtMoc Include="Recommendation\RecommendDialog.h" />
     <ClInclude Include="XianType.h" />
     <QtMoc Include="Glare.h" />
     <QtMoc Include="TransformDialog.h" />
     <QtMoc Include="SpeckleView.h" />
     <QtMoc Include="SpeckleScene.h" />
-    <QtMoc Include="RenderPatternPixmap.h" />
-    <QtMoc Include="RecommendDialog.h" />
     <QtMoc Include="qcustomplot.h" />
     <QtMoc Include="ExportSeriesImageWidget_Translation.h" />
     <QtMoc Include="ExportSeriesImageWidget_Sinusoidal.h" />

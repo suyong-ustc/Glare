@@ -3,7 +3,7 @@
 #include <QDialog>
 #include <QSize>
 #include <QTabWidget>
-#include "GaussianPattern.h"
+#include "Pattern\GaussianPattern.h"
 #include "ExportSeriesImageWidget_Translation.h"
 #include "ExportSeriesImageWidget_Elongation.h"
 #include "ExportSeriesImageWidget_Sinusoidal.h"

@@ -5,7 +5,7 @@
 #include <QVBoxLayout>
 #include <armadillo>
 #include "InverseMap.h"
-#include "RenderPatternPixmap.h"
+#include "Pattern\RenderPatternPixmap.h"
 using namespace arma;
 
 

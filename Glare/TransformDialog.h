@@ -8,7 +8,7 @@
 #include <QStackedWidget>
 #include "SpeckleView.h"
 #include "SpeckleScene.h"
-#include "GaussianPattern.h"
+#include "Pattern\GaussianPattern.h"
 #include "DeformationParameterPanel_Translation.h"
 #include "DeformationParameterPanel_Elongation.h"
 #include "DeformationParameterPanel_Sinusoidal.h"

@@ -5,7 +5,7 @@
 #include <QProgressBar>
 #include <QPushButton>
 #include <QSpinBox>
-#include "GaussianPattern.h"
+#include "Pattern\GaussianPattern.h"
 
 
 class ExportSeriesImageWidget_Elongation : public QWidget

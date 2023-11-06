@@ -4,9 +4,9 @@
 #include <QDoubleSpinBox>
 #include <QGroupBox>
 #include <QPushButton>
-#include "SpeckleScene.h"
-#include "SpeckleView.h"
-#include "EllipseSpecklePattern.h"
+#include "..\SpeckleScene.h"
+#include "..\SpeckleView.h"
+#include "..\Pattern\EllipseSpecklePattern.h"
 
 class RecommendDialog : public QDialog
 {

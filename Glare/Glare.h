@@ -4,7 +4,7 @@
 #include <QAction>
 #include "AssessDialog.h"
 #include "CentralWidget.h"
-#include "RecommendDialog.h"
+#include "Recommendation\RecommendDialog.h"
 #include "TransformDialog.h"
 
 

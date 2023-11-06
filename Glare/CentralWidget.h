@@ -9,9 +9,9 @@
 #include <QSpinBox>
 #include "SpeckleScene.h"
 #include "SpeckleView.h"
-#include "EllipseSpecklePattern.h"
-#include "PolygonSpecklePattern.h"
-#include "GaussianPattern.h"
+#include "Pattern\EllipseSpecklePattern.h"
+#include "Pattern\PolygonSpecklePattern.h"
+#include "Pattern\GaussianPattern.h"
 
 
 class CentralWidget : public QWidget

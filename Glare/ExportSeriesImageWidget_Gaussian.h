@@ -4,7 +4,7 @@
 #include <QDoubleSpinBox>
 #include <QProgressBar>
 #include <QPushButton>
-#include "GaussianPattern.h"
+#include "Pattern\GaussianPattern.h"
 
 
 class ExportSeriesImageWidget_Gaussian : public QWidget

@@ -6,7 +6,7 @@
 #include <QPushButton>
 #include <QSize>
 #include <QSpinBox>
-#include "GaussianPattern.h"
+#include "Pattern\GaussianPattern.h"
 
 
 class ExportSeriesImageWidget_Translation : public QWidget
